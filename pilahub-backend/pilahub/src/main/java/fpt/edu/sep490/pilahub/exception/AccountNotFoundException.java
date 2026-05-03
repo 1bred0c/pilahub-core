@@ -1,0 +1,7 @@
+package fpt.edu.sep490.pilahub.exception;
+
+public class AccountNotFoundException extends RuntimeException {
+    public AccountNotFoundException(String message) {
+        super(message);
+    }
+}

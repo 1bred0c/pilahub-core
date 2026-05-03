@@ -1,0 +1,13 @@
+**/target/
+**/build/
+**/.idea/
+**/*.iml
+**/*.iws
+**/*.ipr
+**/.env
+**/.env.*
+**/firebase-key.json
+**/hs_err_pid*.log
+**/*.log
+.DS_Store
+Thumbs.db

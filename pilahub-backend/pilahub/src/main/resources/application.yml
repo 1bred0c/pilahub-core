@@ -1,0 +1,128 @@
+spring:
+  application:
+    name: pilahub
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 1
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        jdbc:
+          batch_size: 20
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  mail:
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+
+app:
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000}
+    allowed-methods: GET,POST,PUT,PATCH,DELETE,OPTIONS
+    allowed-headers: "*"
+    allow-credentials: true
+  api:
+    version: 1.0.0
+  notification:
+    push:
+      default-image-url: ${PUSH_DEFAULT_IMAGE_URL:https://storage.googleapis.com/pilahub-assets/default-notification.png}
+
+google:
+  client-id:
+    web: ${GOOGLE_CLIENT_ID_WEB:}
+    mobile: ${GOOGLE_CLIENT_ID_MOBILE:}
+
+jwt:
+  secret: ${JWT_SECRET:}
+  expiration: ${JWT_EXPIRATION:86400000}
+  refresh-expiration: ${JWT_REFRESH_EXPIRATION:604800000}
+
+otp:
+  expiration-minutes: ${OTP_EXPIRATION_MINUTES:5}
+
+ai:
+  server:
+    url: ${AI_SERVER_URL:http://localhost:8000}
+    endpoint: /api/v1/health-assessment/assess
+    roadmap-endpoint: /api/v1/roadmap/generate
+    workout-feedback-endpoint: /api/v1/workout-feedback/analyze-ai
+    roadmap-review-endpoint: /api/v1/roadmap-review/analyze
+    inbody-extract-endpoint: /api/v1/inbody/extract
+
+agora:
+  app-id: ${AGORA_APP_ID:}
+  app-certificate: ${AGORA_APP_CERTIFICATE:}
+  customer-id: ${AGORA_CUSTOMER_ID:}
+  customer-secret: ${AGORA_CUSTOMER_SECRET:}
+  recording:
+    region: ${AGORA_RECORDING_REGION:0}
+    endpoint: ${AGORA_RECORDING_ENDPOINT:s3.us-east-005.backblazeb2.com}
+    bucket: ${AGORA_S3_BUCKET:pilahub-recordings}
+    access-key: ${AGORA_S3_ACCESS_KEY:}
+    secret-key: ${AGORA_S3_SECRET_KEY:}
+    vendor: 1
+    retention-days: 7
+  token-expiration-seconds: 3600
+
+springdoc:
+  api-docs:
+    path: /api-docs
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+    tags-sorter: alpha
+    operations-sorter: alpha
+    doc-expansion: list
+    display-request-duration: true
+    default-models-expand-depth: 3
+    default-model-expand-depth: 3
+    filter: true
+    try-it-out-enabled: true
+  show-actuator: false
+
+ghn:
+  api-key: ${GHN_API_KEY:}
+  shop-id: ${GHN_SHOP_ID:0}
+  client-id: ${GHN_CLIENT_ID:}
+  base-url: ${GHN_BASE_URL:https://dev-online-gateway.ghn.vn}
+
+vnpay:
+  tmn-code: ${VNPAY_TMN_CODE:}
+  hash-secret: ${VNPAY_HASH_SECRET:}
+  url: ${VNPAY_URL:https://sandbox.vnpayment.vn/paymentv2/vpcpay.html}
+  return-url: ${VNPAY_RETURN_URL:http://localhost:8080/api/wallet/deposit/callback}
+  ipn-url: ${VNPAY_IPN_URL:http://localhost:8080 }
+  version: 2.1.0
+  command: pay
+  order-type: other
+
+momo:
+  endpoint: ${MOMO_ENDPOINT:https://test-payment.momo.vn/v2/gateway/api/create}
+  partner-code: ${MOMO_PARTNER_CODE:}
+  access-key: ${MOMO_ACCESS_KEY:}
+  secret-key: ${MOMO_SECRET_KEY:}
+  redirect-url: ${MOMO_REDIRECT_URL:http://localhost:8080/api/wallet/deposit/callback}
+  ipn-url: ${MOMO_IPN_URL:http://localhost:8080/api/wallet/momo/ipn}
+  request-type: captureWallet
+  lang: vi
