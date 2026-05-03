@@ -1,99 +1,103 @@
-# 🧘‍♀️ PilaHub - Nền tảng Tập luyện Pilates & Thương mại Điện tử Đa nền tảng
+# PilaHub Core System
 
-![Java Spring Boot](https://img.shields.io/badge/Backend-Java_Spring_Boot-green?logo=spring)
-![React Native](https://img.shields.io/badge/Mobile-React_Native-blue?logo=react)
-![Next.js](https://img.shields.io/badge/Web-Next.js-black?logo=next.js)
-![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-blue?logo=postgresql)
-![GCP](https://img.shields.io/badge/Cloud-Google_Cloud_Platform-orange?logo=google-cloud)
-![AI](https://img.shields.io/badge/Feature-AI_Coaching_%&-success)
-![IoT](https://img.shields.io/badge/Feature-IoT_Tracking-critical)
+<p align="center">
+	<img src="image-readme/pilahub-banner.png" alt="PilaHub Core System banner" />
+</p>
 
-> **"Hệ sinh thái Pilates toàn diện kết hợp Web, Mobile App, Trí tuệ nhân tạo (AI), Dữ liệu IoT và Nền tảng E-Commerce."**
+<p align="center">
+	<img src="image-readme/pilahub-logo.jpg" alt="PilaHub logo" width="220" />
+</p>
 
-[Chèn hình ảnh: Banner/Mockup của PilaHub gồm cả màn hình Mobile và Web Dashboard]
+PilaHub là hệ sinh thái quản lý sức khỏe và fitness tập trung vào pilates, kết hợp theo dõi chỉ số cơ thể, phân tích tư thế bằng AI, đặt lịch tập, theo dõi tiến độ, thương mại điện tử và quản trị dịch vụ vận hành trong một nền tảng thống nhất.
 
----
+## Giới Thiệu
 
-## 📖 Giới thiệu Dự án (Product Vision)
-**PilaHub** ra đời nhằm giải quyết sự phân mảnh trong hệ sinh thái sức khỏe kỹ thuật số. Người tập Pilates thường phải dùng nhiều ứng dụng khác nhau để tìm bài tập, thuê huấn luyện viên, và mua sắm thiết bị. PilaHub gom tất cả vào một nền tảng All-in-One:
-* **Với người tập (Trainee):** Cung cấp lộ trình cá nhân hóa nhờ AI, tích hợp thiết bị IoT đo nhịp tim thời gian thực và hỗ trợ chỉnh sửa tư thế bằng AI.
-* **Với Huấn luyện viên (Coach):** Môi trường để quản lý học viên, tinh chỉnh lộ trình tập luyện và dạy học trực tuyến 1-1.
-* **Với Nhà bán hàng (Vendor):** Sàn thương mại điện tử chuyên dụng (Niche Marketplace) cung cấp dụng cụ, thực phẩm chức năng Pilates.
+PilaHub được xây dựng để gom các nhu cầu rời rạc của người tập Pilates vào một hệ sinh thái all-in-one:
 
----
+- Người tập có thể theo dõi sức khỏe, nhận phản hồi tư thế bằng AI và quản lý lịch tập.
+- Huấn luyện viên có thể theo dõi học viên, tinh chỉnh lộ trình và dạy trực tuyến 1-1.
+- Admin và vendor có thể vận hành hệ thống, quản lý đơn hàng, sản phẩm và doanh thu.
 
-## 🛠 Nền tảng Công nghệ (Tech Stack)
+## Tổng Quan Repository
 
-Hệ thống được phát triển với tư duy Full-stack, tối ưu cho từng nền tảng người dùng:
+Kho lưu trữ này chứa các thành phần chính của hệ thống PilaHub:
 
-### 1. Client Side (Presentation Layer)
-* **Mobile App (React Native):** Dành riêng cho **Trainee** và **Coach**. Xử lý luồng Camera AI (Posture Detection), kết nối Bluetooth với thiết bị IoT và gọi Video trực tuyến.
-* **Web App (Next.js):** Dành cho **Admin** và **Vendor**. Dashboard chuyên biệt giúp quản lý đơn hàng, theo dõi doanh thu và cấu hình hệ thống (Complex UI/UX).
+- `pilahub-backend`: backend API xử lý nghiệp vụ, người dùng, buổi tập, thanh toán và tích hợp AI.
+- `pilahub-ai-system`: hệ thống AI hỗ trợ roadmap, scoring, workout feedback và các chức năng phân tích nội bộ.
+- `pilahub-ai-model`: các mô hình AI dùng để nhận diện tư thế và suy luận lỗi động tác.
 
-### 2. Core System (Backend & Database)
-* **Framework:** **Java Spring Boot** (Monolithic) xử lý toàn bộ Business Logic cốt lõi.
-* **Database:** **PostgreSQL** chuẩn hóa cao, chia thành 5 module lớn (E-Commerce, Booking, Health/AI...).
-* **Task Scheduling:** Tích hợp Cron Jobs tự động dọn dẹp OTP, cập nhật trạng thái đơn hàng, và phân bổ doanh thu ví (Vendor Payout).
+## Tính Năng Chính
 
-### 3. Cloud & Infrastructure
-* **Google Cloud Platform (GCP):** Toàn bộ Core System được deploy trên GCE (Google Compute Engine).
-* **NGINX:** Reverse Proxy xử lý Load Balancing, SSL, điều phối HTTPS và WebSockets.
+- Quản lý hồ sơ sức khỏe và chỉ số cơ thể.
+- Đánh giá tư thế luyện tập bằng AI và phản hồi theo body part cần chỉnh sửa.
+- Quản lý lịch coach, đặt buổi tập và theo dõi live session.
+- Hỗ trợ thanh toán, đơn hàng, ví và thông báo.
+- Cung cấp dashboard, báo cáo và các luồng quản trị cho admin, coach, vendor và trainee.
+- Hỗ trợ marketplace cho sản phẩm và dịch vụ liên quan đến Pilates.
 
-### 4. Third-Party Integrations
-* **Live Streaming:** **Agora** (Hỗ trợ gọi Video Call 1-1 chuẩn thời gian thực).
-* **Trí tuệ nhân tạo:** **Gemini File Search & LLM** (Tự động thiết kế lộ trình tập luyện - Roadmap).
-* **Payment & Logistics:** Cổng thanh toán **VNPay / MoMo** và Giao hàng nhanh (**GHN** API).
-* **Push Notifications:** **Firebase Cloud Messaging (FCM)**.
+## Tech Stack
 
----
+- Backend: Java Spring Boot.
+- Mobile: React Native.
+- Web: Next.js.
+- Database: PostgreSQL.
+- Cloud & infra: Google Cloud Platform, NGINX.
+- Tích hợp: Agora, Gemini File Search & LLM, VNPay / MoMo, GHN, Firebase Cloud Messaging.
 
-## 🚀 Tính năng nổi bật (Key Features)
+## Kiến Trúc Hệ Thống
 
-### 🤸 Trải nghiệm Học viên (Mobile)
-* **AI-Assisted Training:** Phân tích tư thế tập theo thời gian thực (Real-time tracking & AI feedback). [Chèn ảnh/GIF màn hình AI vẽ Skeleton lên người tập]
-* **IoT Health Tracking:** Đồng bộ hóa dữ liệu nhịp tim và nhịp thở liên tục thông qua thiết bị đeo tay.
-* **AI Personalized Roadmap:** Kết hợp phân tích hình thể (BodyGram) để AI tự động sinh lộ trình tập (Roadmap) tối ưu nhất, có thể được HLV tinh chỉnh lại.
-* **Marketplace:** Đặt hàng, theo dõi tiến trình vận chuyển (GHN) và thanh toán e-wallet ngay trên di động.
+### Tổng quan triển khai
 
-### 🧑‍🏫 Trải nghiệm Huấn luyện viên (Mobile)
-* **Quản lý lịch dạy:** Thiết lập lịch trống (Coach Availability) và nhận Booking.
-* **Live Coaching Session:** Dạy học trực tuyến 1-1 qua Video (Agora), gửi Feedback ngay sau buổi tập.
-* **Custom Roadmap:** Theo dõi sát sao tiến độ và thay đổi lộ trình AI đề xuất để phù hợp hơn với thực tế học viên.
+<p align="center">
+	<img src="image-readme/pilahub-system-arch.png" alt="PilaHub system architecture" />
+</p>
 
-### 🏪 Quản trị Vendor & Admin (Web Next.js)
-* **Shop Dashboard:** Quản lý kho sản phẩm, theo dõi đơn hàng, thống kê lợi nhuận trực quan.
-* **Wallet & Payout:** Hệ thống đối soát doanh thu tự động, cho phép Vendor rút tiền từ hệ thống (Withdrawal).
-* **Admin Panel:** Duyệt Vendor, quản lý bài tập (Exercises/Courses), theo dõi luồng giao dịch.
+Sơ đồ trên cho thấy luồng tương tác giữa mobile app, web app, backend Spring Boot, AI system nội bộ và các dịch vụ bên thứ ba như payment gateway, giao hàng và video/session services.
 
----
+### Use case
 
-## 🏗 Kiến trúc Hệ thống & Cơ sở dữ liệu
+<p align="center">
+	<img src="image-readme/pilahub-use-case-diagram.png" alt="PilaHub use case diagram" />
+</p>
 
-[Chèn hình ảnh: Sơ đồ System Architecture (Hình 1.1 trong Report 4)]
+Sơ đồ use case mô tả đầy đủ các vai trò như trainee, coach, admin, vendor, IoT device, AI system, Agora, payment gateway và GHN trong toàn bộ quy trình vận hành.
 
-**Sơ đồ Kiến trúc:** Hệ thống nhận luồng Request từ Client. Các Request RESTful API và WebSockets (Live chat/Tracking) sẽ được NGINX phân luồng. Java Spring Boot Backend xử lý logic và gọi sang System AI hoặc các External APIs (Agora, GHN, VNPay...).
+### ERD dữ liệu
 
-[Chèn hình ảnh: Sơ đồ Database ERD hoặc sơ đồ chia 5 Modules (Hình 2 trong Report 4)]
+<p align="center">
+	<img src="image-readme/pilahub-erd.png" alt="PilaHub ERD diagram" />
+</p>
 
-**Thiết kế Dữ liệu:** Database được thiết kế chuyên sâu thành 5 Modules độc lập để dễ dàng bảo trì và mở rộng:
-1. `Users, Profile & Wallets`
-2. `E-Commerce` (Cart, Orders, Shipping)
-3. `Courses, Exercises & Supplements`
-4. `Coaching, Booking & Roadmaps`
-5. `AI, Health & Progress`
+ERD thể hiện các nhóm thực thể cốt lõi của hệ thống: tài khoản, sức khỏe, bài tập, session, coaching, wallet, order, shipment, notification, roadmap và các bảng phụ trợ liên quan.
 
----
+## Cấu trúc Repository
 
-## 👥 Đội ngũ Phát triển
+```text
+README.md
+image-readme/
+pilahub-ai-model/
+pilahub-ai-system/
+pilahub-backend/
+```
+
+## Tài Liệu Theo Từng Module
+
+- [Backend README](pilahub-backend/README.md)
+- [AI System README](pilahub-ai-system/README.md)
+- [AI Model README](pilahub-ai-model/README.md)
+
+## Đội Ngũ Phát Triển
 
 Dự án Capstone (Mã: SP26SE004) - Đại học FPT TP.HCM.
-* **Trần Công Tường (Leader):** Backend Business Logic, Database Design & Integration.
-* **Nguyễn Thanh Phong (Member):** Web/App Frontend Implementation & UI Testing.
-* **Nguyễn Cao Trí (Member):** System Architecture, Backend Core (Controllers, Services) & Unit Testing.
-* **Nguyễn Văn Minh Thoại (Member):** Front-end<img width="1024" height="1024" alt="3b8cae1ea37922277b68" src="https://github.com/user-attachments/assets/fe31d591-6c5d-4047-9bad-2de290f4e91a" />
 
-* **Nguyễn Thanh Mai (Member):** Front-end
-* **Giảng viên hướng dẫn:** ThS. Đỗ Tấn Nhàn
+- Trần Công Tường: Backend Business Logic, Database Design & Integration.
+- Nguyễn Thanh Phong: Web/App Frontend Implementation & UI Testing.
+- Nguyễn Cao Trí: System Architecture, Backend Core và Unit Testing.
+- Nguyễn Văn Minh Thoại: Front-end.
+- Nguyễn Thanh Mai: Front-end.
+- Giảng viên hướng dẫn: ThS. Đỗ Tấn Nhàn.
 
----
-*Cảm ơn bạn đã quan tâm đến hệ sinh thái PilaHub!*
+## Ghi Chú
+
+Repository này là bộ mã nguồn public cho PilaHub. Nếu bạn muốn mở rộng tài liệu, hãy bổ sung thêm README cho từng module, hướng dẫn cài đặt và sơ đồ triển khai chi tiết theo từng môi trường.
+
