@@ -4,9 +4,6 @@
 	<img src="image-readme/pilahub-banner.png" alt="PilaHub Core System banner" />
 </p>
 
-<p align="center">
-	<img src="image-readme/pilahub-logo.jpg" alt="PilaHub logo" width="220" />
-</p>
 
 PilaHub is a Pilates-focused health and fitness management ecosystem, combining body metric tracking, AI posture analysis, session booking, progress tracking, e-commerce, and operational management services within a unified platform.
 
