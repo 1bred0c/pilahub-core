@@ -8,69 +8,69 @@
 	<img src="image-readme/pilahub-logo.jpg" alt="PilaHub logo" width="220" />
 </p>
 
-PilaHub là hệ sinh thái quản lý sức khỏe và fitness tập trung vào pilates, kết hợp theo dõi chỉ số cơ thể, phân tích tư thế bằng AI, đặt lịch tập, theo dõi tiến độ, thương mại điện tử và quản trị dịch vụ vận hành trong một nền tảng thống nhất.
+PilaHub is a Pilates-focused health and fitness management ecosystem, combining body metric tracking, AI posture analysis, session booking, progress tracking, e-commerce, and operational management services within a unified platform.
 
-## Giới Thiệu
+## Introduction
 
-PilaHub được xây dựng để gom các nhu cầu rời rạc của người tập Pilates vào một hệ sinh thái all-in-one:
+PilaHub is built to consolidate the fragmented needs of Pilates practitioners into an all-in-one ecosystem:
 
-- Người tập có thể theo dõi sức khỏe, nhận phản hồi tư thế bằng AI và quản lý lịch tập.
-- Huấn luyện viên có thể theo dõi học viên, tinh chỉnh lộ trình và dạy trực tuyến 1-1.
-- Admin và vendor có thể vận hành hệ thống, quản lý đơn hàng, sản phẩm và doanh thu.
+- **Trainees** can track their health profiles, receive AI-powered posture feedback, and manage their workout schedules.
+- **Coaches** can monitor trainees' progress, refine training roadmaps, and conduct 1-on-1 live sessions.
+- **Admins and Vendors** can operate the platform, manage orders, products, and track revenue.
 
-## Tổng Quan Repository
+## Repository Overview
 
-Kho lưu trữ này chứa các thành phần chính của hệ thống PilaHub:
+This repository contains the core components of the PilaHub system:
 
-- `pilahub-backend`: backend API xử lý nghiệp vụ, người dùng, buổi tập, thanh toán và tích hợp AI.
-- `pilahub-ai-system`: hệ thống AI hỗ trợ roadmap, scoring, workout feedback và các chức năng phân tích nội bộ.
-- `pilahub-ai-model`: các mô hình AI dùng để nhận diện tư thế và suy luận lỗi động tác.
+- `pilahub-backend`: The backend API handling business logic, user management, workout sessions, payments, and AI integration.
+- `pilahub-ai-system`: The internal AI system supporting roadmap generation, scoring, workout feedback, and analytical functions.
+- `pilahub-ai-model`: The AI models used for posture recognition and movement error deduction.
 
-## Tính Năng Chính
+## Key Features
 
-- Quản lý hồ sơ sức khỏe và chỉ số cơ thể.
-- Đánh giá tư thế luyện tập bằng AI và phản hồi theo body part cần chỉnh sửa.
-- Quản lý lịch coach, đặt buổi tập và theo dõi live session.
-- Hỗ trợ thanh toán, đơn hàng, ví và thông báo.
-- Cung cấp dashboard, báo cáo và các luồng quản trị cho admin, coach, vendor và trainee.
-- Hỗ trợ marketplace cho sản phẩm và dịch vụ liên quan đến Pilates.
+- Health profile and body metric management.
+- AI-assisted posture evaluation during workouts with real-time feedback on body parts needing adjustment.
+- Coach scheduling, session booking, and live video session tracking.
+- Secure processing of payments, orders, e-wallets, and push notifications.
+- Comprehensive dashboards, reports, and administrative workflows for admins, coaches, vendors, and trainees.
+- Niche marketplace for Pilates-related products, equipment, and services.
 
 ## Tech Stack
 
-- Backend: Java Spring Boot.
-- Mobile: React Native.
-- Web: Next.js.
-- Database: PostgreSQL.
-- Cloud & infra: Google Cloud Platform, NGINX.
-- Tích hợp: Agora, Gemini File Search & LLM, VNPay / MoMo, GHN, Firebase Cloud Messaging.
+- **Backend:** Java Spring Boot.
+- **Mobile:** React Native.
+- **Web:** Next.js.
+- **Database:** PostgreSQL.
+- **Cloud & Infrastructure:** Google Cloud Platform (GCP), NGINX.
+- **Integrations:** Agora (Live Streaming), Gemini File Search & LLM, VNPay / MoMo (Payments), GHN (Logistics), Firebase Cloud Messaging (FCM).
 
-## Kiến Trúc Hệ Thống
+## System Architecture
 
-### Tổng quan triển khai
+### Deployment Overview
 
 <p align="center">
 	<img src="image-readme/pilahub-system-arch.png" alt="PilaHub system architecture" />
 </p>
 
-Sơ đồ trên cho thấy luồng tương tác giữa mobile app, web app, backend Spring Boot, AI system nội bộ và các dịch vụ bên thứ ba như payment gateway, giao hàng và video/session services.
+The diagram above illustrates the interaction flow between the mobile app, web app, Spring Boot backend, internal AI system, and third-party services such as payment gateways, shipping providers, and video streaming services.
 
-### Use case
+### Use Case Diagram
 
 <p align="center">
 	<img src="image-readme/pilahub-use-case-diagram.png" alt="PilaHub use case diagram" />
 </p>
 
-Sơ đồ use case mô tả đầy đủ các vai trò như trainee, coach, admin, vendor, IoT device, AI system, Agora, payment gateway và GHN trong toàn bộ quy trình vận hành.
+The use case diagram fully describes the workflows and roles of the trainee, coach, admin, vendor, IoT devices, AI system, Agora, payment gateways, and GHN throughout the platform's operation.
 
-### ERD dữ liệu
+### Data ERD
 
 <p align="center">
 	<img src="image-readme/pilahub-erd.png" alt="PilaHub ERD diagram" />
 </p>
 
-ERD thể hiện các nhóm thực thể cốt lõi của hệ thống: tài khoản, sức khỏe, bài tập, session, coaching, wallet, order, shipment, notification, roadmap và các bảng phụ trợ liên quan.
+The Entity-Relationship Diagram (ERD) represents the core entity groups of the system: accounts, health metrics, exercises, coaching sessions, wallets, orders, shipments, notifications, training roadmaps, and related auxiliary tables.
 
-## Cấu trúc Repository
+## Repository Structure
 
 ```text
 README.md
@@ -78,26 +78,3 @@ image-readme/
 pilahub-ai-model/
 pilahub-ai-system/
 pilahub-backend/
-```
-
-## Tài Liệu Theo Từng Module
-
-- [Backend README](pilahub-backend/README.md)
-- [AI System README](pilahub-ai-system/README.md)
-- [AI Model README](pilahub-ai-model/README.md)
-
-## Đội Ngũ Phát Triển
-
-Dự án Capstone (Mã: SP26SE004) - Đại học FPT TP.HCM.
-
-- Trần Công Tường: Backend Business Logic, Database Design & Integration.
-- Nguyễn Thanh Phong: Web/App Frontend Implementation & UI Testing.
-- Nguyễn Cao Trí: System Architecture, Backend Core và Unit Testing.
-- Nguyễn Văn Minh Thoại: Front-end.
-- Nguyễn Thanh Mai: Front-end.
-- Giảng viên hướng dẫn: ThS. Đỗ Tấn Nhàn.
-
-## Ghi Chú
-
-Repository này là bộ mã nguồn public cho PilaHub. Nếu bạn muốn mở rộng tài liệu, hãy bổ sung thêm README cho từng module, hướng dẫn cài đặt và sơ đồ triển khai chi tiết theo từng môi trường.
-
